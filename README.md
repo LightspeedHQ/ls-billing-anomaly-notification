@@ -8,6 +8,30 @@ A GCP Cloud Function that receives ML-based billing anomaly detection notificati
 
 For more details on GCP billing anomaly detection: https://cloud.google.com/billing/docs/how-to/notify
 
+## Contents
+
+- [Getting alerts for your team](#getting-alerts-for-your-team)
+- [Features](#features)
+- [How it works](#regex-based-routing)
+- [Silencing anomalies](#silencing-anomalies)
+- [Per-project alert thresholds](#per-project-alert-thresholds)
+- [Duplicate detection](#duplicate-detection-24-hour-per-channel-deduplication)
+- [Usage (Terraform)](#usage)
+- [Configuring GCP Billing Anomaly Detection](#configuring-gcp-billing-anomaly-detection)
+- [Testing](#testing-function-locally)
+
+## Getting alerts for your team
+
+To receive billing anomaly alerts in your team's Slack channel, add your team's GCP projects and Slack channel to the [routing spreadsheet](https://docs.google.com/spreadsheets/d/14Sis-_roMMy_rEbF3cmgyz5bOsZZ7y5AqL-1Z-p7ZqM/edit?gid=0#gid=0).
+
+The spreadsheet is the source of truth for which teams receive alerts and where. Each row maps a GCP project name pattern (regex) to a Slack channel. Once added, the B2B SRE team will update the Terraform config and deploy the change.
+
+**To onboard your team:**
+1. Open the [routing spreadsheet](https://docs.google.com/spreadsheets/d/14Sis-_roMMy_rEbF3cmgyz5bOsZZ7y5AqL-1Z-p7ZqM/edit?gid=0#gid=0)
+2. Add a row with your GCP project name prefix(es) and target Slack channel
+3. Make sure the B2B SRE bot is invited to your Slack channel
+4. Reach out to the B2B SRE team to apply the change
+
 ## Features
 
 - ✅ **ML-based anomaly detection** - Not simple budget thresholds
